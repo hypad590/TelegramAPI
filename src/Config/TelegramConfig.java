@@ -12,6 +12,18 @@ public class TelegramConfig {
     private String msg;
     private String carsUrl;
     private String bikesUrl;
+    private String url;
+    private String category;
+    private String carsCategory;
+    private String bikesCategory;
+    public String getCarsCategory(){return carsCategory;}
+    public void setCarsCategory(String carsCategory){this.carsCategory = carsCategory;}
+    public String getBikesCategory(){return bikesCategory;}
+    public void setBikesCategory(String bikesCategory){this.bikesCategory = bikesCategory;}
+    public String getCategory(){return category;}
+    public void setCategory(String category){this.category = category;}
+    public String getUrl(){return url;}
+    public void setUrl(String url){this.url = url;}
     public String getCarsUrl(){return carsUrl;}
     public void setCarsUrl(String carsUrl){this.carsUrl = carsUrl;}
     public String getBikesUrl(){return bikesUrl;}

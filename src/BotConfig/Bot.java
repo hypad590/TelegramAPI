@@ -44,30 +44,46 @@ public class Bot {
         );
         bot.execute(new SendMessage(config.getChatId()
                 ,"Choose:").replyMarkup(markup));
-        bot.setUpdatesListener(updates ->{
-            for(Update update : updates){
-                Message msg = update.message();
-                    if(update.inlineQuery().query() != null){
-                        String query = update.inlineQuery().query();
-                        System.out.println(query);
-                        if(query.equals("cars")){
-                            config.setCarsUrl(config.getCarsUrl());
-                            bot.execute(new SendMessage(msg.chat().id(), "Searching in: " + config.getCarsUrl()));
-                        }else if(query.equals("bikes")){
-                            config.setBikesUrl(config.getBikesUrl());
-                            bot.execute(new SendMessage(msg.chat().id(),"Searching in: " + config.getBikesUrl()));
-                        }
+        bot.setUpdatesListener(updates -> {
+            for (Update update : updates) {
+                if (update.callbackQuery() != null) {
+                    String data = update.callbackQuery().data();
+                    Long chatId = update.callbackQuery().message().chat().id();
+
+                    String responseMessage = "";
+                    if ("cars".equals(data)) {
+                        config.setUrl(config.getCarsUrl());
+                        responseMessage = "Searching in: " + config.getUrl();
+                    } else if ("bikes".equals(data)) {
+                        config.setUrl(config.getBikesUrl());
+                        responseMessage = "Searching in: " + config.getUrl();
+                    }
+                    bot.execute(new SendMessage(chatId, responseMessage));
+                } else if (update.inlineQuery() != null) {
+                    Message msg = update.message();
+                    String query = update.inlineQuery().query();
+                    Long chatId = msg.chat().id();
+
+                    String responseMessage = "";
+                    if ("cars".equals(query)) {
+                        config.setUrl(config.getCarsUrl());
+                        config.setCategory(config.getCarsCategory());
+                        responseMessage = "Searching in: " + config.getUrl();
+                    } else if ("bikes".equals(query)) {
+                        config.setUrl(config.getBikesUrl());
+                        config.setCategory(config.getBikesCategory());
+                        responseMessage = "Searching in: " + config.getUrl();
+                    }
+                    bot.execute(new SendMessage(chatId, responseMessage));
+                    if(responseMessage.contains("Searching in: ")){
+                        InlineKeyboardMarkup markUP = new InlineKeyboardMarkup();
+                       /* markUP.addRow(
+                          new InlineKeyboardButton(JsoupConnection.getList()).callbackData("category")
+                        );*/
+                    }
                 }
             }
-
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
-            },e ->{
-            if(e.response() != null){
-                e.response().errorCode();
-                e.response().description();
-            }else{
-                e.printStackTrace();
-            }
         });
     }
 }
