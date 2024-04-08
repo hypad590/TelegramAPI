@@ -9,9 +9,9 @@ import java.io.IOException;
 public class JsoupConnection {
     public static void main(String[] args) throws IOException {
         TelegramConfig config = new TelegramConfig();
-        System.out.println(setUpConnection(config.getUrl()));
+//        System.out.println(connectWith$(config.getUrl())); should change basing on users choice
     }
-    private static String setUpConnection(String url) throws IOException {
+    private static String connectWith$(String url) throws IOException {
         for(Element el:Jsoup.connect(url).get().select("a")){
             System.out.println(el);
         }

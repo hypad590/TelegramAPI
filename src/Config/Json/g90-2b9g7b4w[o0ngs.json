@@ -1,5 +1,6 @@
 {
   "botToken": "6820710646:AAEB4Yl0AwgYet9ytJfE0LK-P644TtE9BzU",
   "chatId": "1098397785",
-  "url": "https://cars.av.by/"
+  "carsUrl": "https://cars.av.by/",
+  "bikesUrl": "https://moto.av.by/"
 }

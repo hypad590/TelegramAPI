@@ -10,9 +10,12 @@ public class TelegramConfig {
     private String botToken;
     private long chatId;
     private String msg;
-    private String url;
-    public String getUrl(){return url;}
-    public void setUrl(){this.url = url;}
+    private String carsUrl;
+    private String bikesUrl;
+    public String getCarsUrl(){return carsUrl;}
+    public void setCarsUrl(String carsUrl){this.carsUrl = carsUrl;}
+    public String getBikesUrl(){return bikesUrl;}
+    public void setBikesUrl(String bikesUrl){this.bikesUrl = bikesUrl;}
     public String getMsg() {
         return msg;
     }
