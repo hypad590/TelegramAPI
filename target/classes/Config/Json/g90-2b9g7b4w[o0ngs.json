@@ -2,6 +2,8 @@
   "botToken": "6820710646:AAEB4Yl0AwgYet9ytJfE0LK-P644TtE9BzU",
   "chatId": "1098397785",
   "carsUrl": "https://cars.av.by/",
-  "bikesUrl": "https://moto.av.by/",
-  "url": ""
+  "bikesUrl": "https://moto.av.by/bike",
+  "url": "",
+  "carsCategory": "",
+  "bikesCategory": ""
 }
